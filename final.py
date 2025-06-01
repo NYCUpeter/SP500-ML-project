@@ -36,7 +36,7 @@ def compute_MACD(series, fast=12, slow=26, signal=9):
     histogram = macd - signal_line
     return macd, signal_line, histogram
 
-# --- Attention Layer 修正版 ---
+# --- Attention Layer ---
 def attention(inputs):
     # inputs.shape = (batch_size, time_steps, features)
     time_steps = K.int_shape(inputs)[1]
@@ -53,7 +53,6 @@ def attention(inputs):
     output_attention_mul = Multiply()([inputs, a_probs])  # shape: (batch_size, time_steps, features)
     return output_attention_mul
 
-# --- 以下省略其他函數，保持不變 ---
 
 # 分類評估
 def evaluate_classification(model, name, X_train, y_train, X_test, y_test):
